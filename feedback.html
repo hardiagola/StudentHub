@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - StudentHub</title>
+  
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <h1>StudentHub</h1>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &gt; Feedback
+  </nav>
+
+  <main id="main-content">
+    <section>
+      <h2>Share Your Feedback</h2>
+      <form action="#" method="post">
+        <label for="fname">Name</label>
+        <input type="text" id="fname" name="fname" required>
+
+        <label for="rating">Rating</label>
+        <select id="rating" name="rating">
+          <option value="5">Excellent</option>
+          <option value="4">Good</option>
+          <option value="3">Average</option>
+          <option value="2">Poor</option>
+        </select>
+
+        <label for="comments">Comments</label>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+
+        <button type="submit">Submit Feedback</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 StudentHub. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
