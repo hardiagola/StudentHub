@@ -143,3 +143,58 @@ input:focus,
 textarea:focus {
   outline: 3px solid #f1c40f;
 }
+
+/* Practical 3: Responsive UI Design */
+
+/* Responsive layout for dashboard and content cards */
+.dashboard-grid,
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent tables from overflowing */
+table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Tablet screens */
+@media (min-width: 600px) {
+  main {
+    padding: 0 25px;
+  }
+
+  .dashboard-grid,
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Desktop screens */
+@media (min-width: 900px) {
+  .dashboard-grid,
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  main {
+    max-width: 1100px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+}
