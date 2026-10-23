@@ -1,0 +1,18 @@
+
+[
+  {"id":1,"name":"Tech Fest","date":"2026-11-10","venue":"Main Auditorium","category":"Technical"},
+  {"id":2,"name":"Coding Contest","date":"2026-11-12","venue":"Computer Lab 3","category":"Technical"},
+  {"id":3,"name":"Cultural Night","date":"2026-11-15","venue":"Open Ground","category":"Cultural"},
+  {"id":4,"name":"Robotics Workshop","date":"2026-11-18","venue":"Innovation Lab","category":"Workshop"},
+  {"id":5,"name":"AI Seminar","date":"2026-11-20","venue":"Seminar Hall","category":"Technical"},
+  {"id":6,"name":"Sports Day","date":"2026-11-22","venue":"Sports Ground","category":"Sports"},
+  {"id":7,"name":"Photography Competition","date":"2026-11-24","venue":"College Campus","category":"Cultural"},
+  {"id":8,"name":"Web Development Workshop","date":"2026-11-26","venue":"Computer Lab 2","category":"Workshop"},
+  {"id":9,"name":"Hackathon","date":"2026-11-28","venue":"Innovation Lab","category":"Technical"},
+  {"id":10,"name":"Music Competition","date":"2026-12-01","venue":"Open Ground","category":"Cultural"},
+  {"id":11,"name":"Cybersecurity Seminar","date":"2026-12-03","venue":"Seminar Hall","category":"Technical"},
+  {"id":12,"name":"Football Tournament","date":"2026-12-05","venue":"Sports Ground","category":"Sports"},
+  {"id":13,"name":"Cloud Computing Workshop","date":"2026-12-08","venue":"Computer Lab 1","category":"Workshop"},
+  {"id":14,"name":"Dance Competition","date":"2026-12-10","venue":"Main Auditorium","category":"Cultural"},
+  {"id":15,"name":"Project Exhibition","date":"2026-12-12","venue":"Exhibition Hall","category":"Technical"}
+]

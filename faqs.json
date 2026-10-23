@@ -1,0 +1,18 @@
+
+[
+  {"id":1,"question":"How do I register on StudentHub?","answer":"Open the Register page and fill in your student details.","category":"Account"},
+  {"id":2,"question":"How do I join an event?","answer":"Visit the Events page to explore upcoming campus activities.","category":"Events"},
+  {"id":3,"question":"I forgot my password. What should I do?","answer":"Contact support for assistance with account recovery.","category":"Account"},
+  {"id":4,"question":"Can I update my profile?","answer":"Open your Profile page to view or update your details.","category":"Profile"},
+  {"id":5,"question":"Where can I find upcoming events?","answer":"Visit the Events page to view event dates and venues.","category":"Events"},
+  {"id":6,"question":"How do I contact support?","answer":"Use the Contact page to send a message to the support team.","category":"Support"},
+  {"id":7,"question":"Can I participate in multiple events?","answer":"Yes, you can explore and register for multiple events when registration is available.","category":"Events"},
+  {"id":8,"question":"How do I submit feedback?","answer":"Open the Feedback page and submit your comments.","category":"Support"},
+  {"id":9,"question":"What is StudentHub?","answer":"StudentHub is a student portal for campus activities and student information.","category":"General"},
+  {"id":10,"question":"Who can use StudentHub?","answer":"Students can use the portal to explore its available features.","category":"General"},
+  {"id":11,"question":"How can I view my dashboard?","answer":"Select Dashboard from the main navigation.","category":"Profile"},
+  {"id":12,"question":"Where can I find event venues?","answer":"The Events page lists the venue for each event.","category":"Events"},
+  {"id":13,"question":"How do I edit my student details?","answer":"Open your Profile page and use the available edit form.","category":"Profile"},
+  {"id":14,"question":"What if an event date changes?","answer":"Check the Events page for the latest event information available in the portal.","category":"Events"},
+  {"id":15,"question":"How can I report a problem?","answer":"Contact the StudentHub support team using the Contact page.","category":"Support"}
+]

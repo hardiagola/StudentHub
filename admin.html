@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin - StudentHub</title>
   <link rel="stylesheet" href="style.css">
-  
 </head>
 <body>
-
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
     <h1>StudentHub</h1>
+    <button id="menuToggle" class="menu-toggle" type="button"
+            aria-label="Toggle navigation" aria-expanded="false">☰ Menu</button>
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -23,11 +24,12 @@
         <li><a href="events.html">Events</a></li>
         <li><a href="profile.html">Profile</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="admin.html">Admin</a></li>
+        <li><a href="admin.html" aria-current="page">Admin</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="feedback.html">Feedback</a></li>
       </ul>
     </nav>
+    <button id="themeToggle" type="button">Switch to Dark Mode</button>
   </header>
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -36,34 +38,48 @@
 
   <main id="main-content">
     <section>
-      <h2>Admin Panel</h2>
-      <p>Manage registered students and events from here.</p>
-    </section>
+      <h2>Registered Students</h2>
 
-    <section aria-labelledby="students-heading">
-      <h2 id="students-heading">Registered Students</h2>
-      <table>
-        <caption>Currently registered students</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Enrollment No</th>
-            <th scope="col">Branch</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Hardi Patel</td>
-            <td>22CE000</td>
-            <td>Computer Engineering</td>
-          </tr>
-          <tr>
-            <td>Dhruv Shah</td>
-            <td>22CE001</td>
-            <td>Computer Engineering</td>
-          </tr>
-        </tbody>
-      </table>
+      <label for="studentSearch">Search students</label>
+      <input type="search" id="studentSearch"
+             placeholder="Search by name or enrollment number">
+
+      <label for="studentCourse">Filter by course</label>
+      <select id="studentCourse">
+        <option value="">All courses</option>
+        <option value="Computer Engineering">Computer Engineering</option>
+        <option value="Artificial Intelligence">Artificial Intelligence</option>
+        <option value="Information Technology">Information Technology</option>
+      </select>
+
+      <label for="studentSort">Sort by</label>
+      <select id="studentSort">
+        <option value="name-asc">Name: A–Z</option>
+        <option value="name-desc">Name: Z–A</option>
+        <option value="year-asc">Year: lowest first</option>
+        <option value="year-desc">Year: highest first</option>
+      </select>
+
+      <p id="studentsStatus" role="status" aria-live="polite">
+        Loading students...
+      </p>
+
+      <div class="table-container">
+        <table>
+          <caption>Student records</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Enrollment No.</th>
+              <th scope="col">Course</th>
+              <th scope="col">Year</th>
+            </tr>
+          </thead>
+          <tbody id="studentsList"></tbody>
+        </table>
+      </div>
+
+      <div id="studentsPagination" class="pagination"></div>
     </section>
   </main>
 
@@ -72,6 +88,6 @@
   </footer>
 
   <script src="script.js"></script>
-
+  <script src="data.js"></script>
 </body>
 </html>

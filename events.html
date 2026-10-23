@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +8,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
     <h1>StudentHub</h1>
+    <button id="menuToggle" class="menu-toggle" type="button"
+            aria-label="Toggle navigation" aria-expanded="false">☰ Menu</button>
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -19,7 +21,7 @@
         <li><a href="register.html">Register</a></li>
         <li><a href="login.html">Login</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="events.html">Events</a></li>
+        <li><a href="events.html" aria-current="page">Events</a></li>
         <li><a href="profile.html">Profile</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="admin.html">Admin</a></li>
@@ -27,6 +29,7 @@
         <li><a href="feedback.html">Feedback</a></li>
       </ul>
     </nav>
+    <button id="themeToggle" type="button">Switch to Dark Mode</button>
   </header>
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -36,38 +39,32 @@
   <main id="main-content">
     <section>
       <h2>Upcoming Events</h2>
-      <table>
-        <caption>List of upcoming campus events</caption>
-        <thead>
-          <tr>
-            <th scope="col">Event Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Venue</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Tech Fest</td>
-            <td>20 Aug 2026</td>
-            <td>Main Auditorium</td>
-          </tr>
-          <tr>
-            <td>Coding Contest</td>
-            <td>25 Aug 2026</td>
-            <td>Computer Lab 3</td>
-          </tr>
-          <tr>
-            <td>Cultural Night</td>
-            <td>30 Aug 2026</td>
-            <td>Open Ground</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
 
-    <aside aria-label="Registration note">
-      <p>Interested in an event? <a href="register.html">Register on StudentHub</a> first.</p>
-    </aside>
+      <label for="eventSearch">Search events</label>
+      <input type="search" id="eventSearch"
+             placeholder="Search by event name or venue">
+
+      <label for="eventCategory">Filter by category</label>
+      <select id="eventCategory">
+        <option value="">All categories</option>
+        <option value="Technical">Technical</option>
+        <option value="Cultural">Cultural</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Sports">Sports</option>
+      </select>
+
+      <label for="eventSort">Sort by</label>
+      <select id="eventSort">
+        <option value="date-asc">Date: earliest first</option>
+        <option value="date-desc">Date: latest first</option>
+        <option value="name-asc">Name: A–Z</option>
+        <option value="name-desc">Name: Z–A</option>
+      </select>
+
+      <p id="eventsStatus" role="status" aria-live="polite">Loading events...</p>
+      <div id="eventsList" class="data-grid"></div>
+      <div id="eventsPagination" class="pagination"></div>
+    </section>
   </main>
 
   <footer>
@@ -75,5 +72,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="data.js"></script>
 </body>
 </html>

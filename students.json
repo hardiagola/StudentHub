@@ -1,0 +1,18 @@
+
+[
+  {"id":1,"name":"Aarav Patel","enrollment":"CE001","course":"Computer Engineering","year":1},
+  {"id":2,"name":"Diya Shah","enrollment":"CE002","course":"Artificial Intelligence","year":1},
+  {"id":3,"name":"Rohan Mehta","enrollment":"CE003","course":"Information Technology","year":2},
+  {"id":4,"name":"Ananya Desai","enrollment":"CE004","course":"Computer Engineering","year":3},
+  {"id":5,"name":"Vivaan Joshi","enrollment":"CE005","course":"Artificial Intelligence","year":2},
+  {"id":6,"name":"Ishita Patel","enrollment":"CE006","course":"Information Technology","year":1},
+  {"id":7,"name":"Arjun Shah","enrollment":"CE007","course":"Computer Engineering","year":4},
+  {"id":8,"name":"Saanvi Mehta","enrollment":"CE008","course":"Artificial Intelligence","year":3},
+  {"id":9,"name":"Reyansh Desai","enrollment":"CE009","course":"Information Technology","year":2},
+  {"id":10,"name":"Aadhya Joshi","enrollment":"CE010","course":"Computer Engineering","year":1},
+  {"id":11,"name":"Krish Patel","enrollment":"CE011","course":"Artificial Intelligence","year":4},
+  {"id":12,"name":"Myra Shah","enrollment":"CE012","course":"Information Technology","year":3},
+  {"id":13,"name":"Kabir Mehta","enrollment":"CE013","course":"Computer Engineering","year":2},
+  {"id":14,"name":"Pari Desai","enrollment":"CE014","course":"Artificial Intelligence","year":1},
+  {"id":15,"name":"Advik Joshi","enrollment":"CE015","course":"Information Technology","year":4}
+]
