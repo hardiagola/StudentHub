@@ -371,3 +371,82 @@ main > section {
   display: block;
   width: 100%;
 }
+
+
+/* Practical 5: Registration form validation */
+
+.field-error {
+  display: block;
+  color: #c62828;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border: 2px solid #c62828;
+}
+
+input[aria-invalid="false"],
+select[aria-invalid="false"] {
+  border-color: #ccc;
+}
+
+.strength-container {
+  margin-top: 10px;
+}
+
+.strength-container label {
+  display: block;
+}
+
+#passwordStrength {
+  display: block;
+  width: 100%;
+  height: 14px;
+  margin: 8px 0;
+}
+
+#strengthText {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+#formMessage {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#registrationForm fieldset {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 15px;
+  padding: 12px;
+}
+
+#registrationForm fieldset label,
+#registrationForm .terms-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#registrationForm input[type="radio"],
+#registrationForm input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+#registrationForm button + button {
+  margin-left: 8px;
+}
+
+body.dark-mode .field-error {
+  color: #ff8a80;
+}
+
+body.dark-mode input[aria-invalid="true"],
+body.dark-mode select[aria-invalid="true"] {
+  border-color: #ff8a80;
+}
