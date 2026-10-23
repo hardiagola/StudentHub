@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +9,19 @@
 </head>
 <body>
 
+  <!-- Skip to content link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
     <h1>StudentHub</h1>
+
+    <!-- Hamburger menu -->
+    <button id="menuToggle" class="menu-toggle"
+            type="button" aria-label="Toggle navigation"
+            aria-expanded="false">
+      ☰ Menu
+    </button>
+
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -27,36 +37,78 @@
         <li><a href="feedback.html">Feedback</a></li>
       </ul>
     </nav>
+
+    <!-- Light/dark theme switcher -->
+    <button id="themeToggle" type="button">
+      Switch to Dark Mode
+    </button>
   </header>
 
+  <!-- Breadcrumb navigation -->
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="index.html">Home</a> &gt; FAQ
   </nav>
 
   <main id="main-content">
+
+    <!-- Existing FAQ heading -->
     <section>
       <h2>Frequently Asked Questions</h2>
 
-      <article>
-        <h3>How do I register on StudentHub?</h3>
-        <p>Go to the <a href="register.html">Register</a> page and fill in your details.</p>
+      <!-- FAQ 1 -->
+      <article class="faq-item">
+        <button class="faq-question" type="button"
+                aria-expanded="false">
+          How do I register on StudentHub?
+        </button>
+
+        <div class="faq-answer" hidden>
+          <p>
+            Go to the <a href="register.html">Register</a>
+            page and fill in your details.
+          </p>
+        </div>
       </article>
 
-      <article>
-        <h3>How do I join an event?</h3>
-        <p>Visit the <a href="events.html">Events</a> page and click on an event to join.</p>
+      <!-- FAQ 2 -->
+      <article class="faq-item">
+        <button class="faq-question" type="button"
+                aria-expanded="false">
+          How do I join an event?
+        </button>
+
+        <div class="faq-answer" hidden>
+          <p>
+            Visit the <a href="events.html">Events</a>
+            page and click on an event to join.
+          </p>
+        </div>
       </article>
 
-      <article>
-        <h3>I forgot my password. What do I do?</h3>
-        <p>Contact support using the <a href="contact.html">Contact</a> page for help.</p>
+      <!-- FAQ 3 -->
+      <article class="faq-item">
+        <button class="faq-question" type="button"
+                aria-expanded="false">
+          I forgot my password. What do I do?
+        </button>
+
+        <div class="faq-answer" hidden>
+          <p>
+            Contact support using the
+            <a href="contact.html">Contact</a>
+            page for help.
+          </p>
+        </div>
       </article>
+
     </section>
+
   </main>
 
   <footer>
     <p>&copy; 2026 StudentHub. All rights reserved.</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

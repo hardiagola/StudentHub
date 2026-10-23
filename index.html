@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,19 @@
 </head>
 <body>
 
-  <!-- Skip to content link for keyboard/screen reader users -->
+  <!-- Skip to content link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
     <h1>StudentHub</h1>
+
+    <!-- Hamburger menu -->
+    <button id="menuToggle" class="menu-toggle"
+            type="button" aria-label="Toggle navigation"
+            aria-expanded="false">
+      ☰ Menu
+    </button>
+
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -28,6 +37,11 @@
         <li><a href="feedback.html">Feedback</a></li>
       </ul>
     </nav>
+
+    <!-- Light/dark theme switcher -->
+    <button id="themeToggle" type="button">
+      Switch to Dark Mode
+    </button>
   </header>
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -35,36 +49,124 @@
   </nav>
 
   <main id="main-content">
+
+    <!-- Notification banner -->
+    <div id="notification" class="notification"
+         role="status" hidden>
+      Welcome to StudentHub!
+      <button id="closeNotification" type="button"
+              aria-label="Close notification">
+        &times;
+      </button>
+    </div>
+
+    <!-- Content slider -->
+    <section class="slider" aria-label="StudentHub highlights">
+
+      <div class="slide active">
+        <h2>Welcome to StudentHub</h2>
+        <p>
+          StudentHub is a portal built by students, for students.
+          Register for events, track your academic activities,
+          and stay connected with campus life.
+        </p>
+      </div>
+
+      <div class="slide" hidden>
+        <h2>Join College Events</h2>
+        <p>
+          Discover upcoming college events and participate
+          in exciting campus activities.
+        </p>
+        <a href="events.html">Explore Events</a>
+      </div>
+
+      <div class="slide" hidden>
+        <h2>Manage Your Profile</h2>
+        <p>
+          Keep your student information updated and track
+          your activities in one place.
+        </p>
+        <a href="profile.html">View Profile</a>
+      </div>
+
+      <button id="prevSlide" type="button">Previous</button>
+      <button id="nextSlide" type="button">Next</button>
+    </section>
+
+    <!-- Existing home page content -->
     <section>
       <h2>Welcome to StudentHub</h2>
-      <p>StudentHub is a portal built by students, for students. Here you can register for
-        events, track your academic activities, and stay connected with campus life.</p>
+      <p>
+        StudentHub is a portal built by students, for students.
+        Here you can register for events, track your academic
+        activities, and stay connected with campus life.
+      </p>
     </section>
 
     <section aria-labelledby="features-heading">
       <h2 id="features-heading">What you can do here</h2>
+
       <article>
         <h3>Register for the portal</h3>
         <p>Create your account to get started.</p>
+        <a href="register.html">Register Now</a>
       </article>
+
       <article>
         <h3>Join events</h3>
         <p>Browse and register for upcoming college events.</p>
+        <a href="events.html">View Events</a>
       </article>
+
       <article>
         <h3>Manage your profile</h3>
         <p>Update your details and track your activity.</p>
+        <a href="profile.html">View Profile</a>
       </article>
     </section>
 
+    <!-- Existing quick tip -->
     <aside aria-label="Quick tip">
-      <p><strong>Tip:</strong> New here? Start with the <a href="register.html">Register</a> page.</p>
+      <p>
+        <strong>Tip:</strong> New here? Start with the
+        <a href="register.html">Register</a> page.
+      </p>
     </aside>
+
+    <!-- Modal popup -->
+    <section>
+      <h2>Learn More</h2>
+      <p>Find out more about the StudentHub portal.</p>
+      <button id="openModal" type="button">
+        About StudentHub
+      </button>
+    </section>
+
+    <div id="modal" class="modal" hidden>
+      <div class="modal-content" role="dialog"
+           aria-modal="true" aria-labelledby="modalTitle">
+
+        <button id="closeModal" type="button"
+                aria-label="Close popup">
+          &times;
+        </button>
+
+        <h2 id="modalTitle">About StudentHub</h2>
+        <p>
+          StudentHub helps students explore college events,
+          manage their profiles, and stay connected with
+          campus activities.
+        </p>
+      </div>
+    </div>
+
   </main>
 
   <footer>
     <p>&copy; 2026 StudentHub. All rights reserved.</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

@@ -198,3 +198,176 @@ table {
     gap: 20px;
   }
 }
+
+/* Practical 4: JavaScript interactivity */
+
+[hidden] {
+  display: none !important;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.notification {
+  background: #dff5e1;
+  color: #174d25;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.notification button {
+  float: right;
+  cursor: pointer;
+}
+
+.slider {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+.slide {
+  min-height: 100px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  text-align: left;
+  font-weight: bold;
+  background: #ecf0f1;
+  color: #222;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.faq-answer {
+  padding: 10px 15px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #fff;
+  color: #222;
+  width: 100%;
+  max-width: 450px;
+  padding: 25px;
+  border-radius: 8px;
+}
+
+#closeModal {
+  float: right;
+}
+
+body.dark-mode {
+  background: #181818;
+  color: #f1f1f1;
+}
+
+body.dark-mode section,
+body.dark-mode .slider,
+body.dark-mode .modal-content {
+  background: #292929;
+  color: #f1f1f1;
+}
+
+body.dark-mode .faq-question {
+  background: #383838;
+  color: #fff;
+  border-color: #666;
+}
+
+body.dark-mode .breadcrumb {
+  background: #333;
+  color: #fff;
+}
+
+@media (max-width: 599px) {
+  .menu-toggle {
+    display: inline-block;
+    margin: 8px 0;
+    padding: 8px 12px;
+  }
+
+  header nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  header nav ul.menu-open {
+    display: flex;
+  }
+}
+/* Practical 4: Dark mode */
+body.dark-mode {
+  background-color: #181818;
+  color: #f1f1f1;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background-color: #111827;
+  color: #ffffff;
+}
+
+body.dark-mode main section,
+body.dark-mode .slider,
+body.dark-mode .modal-content {
+  background-color: #292929;
+  color: #f1f1f1;
+}
+
+body.dark-mode .breadcrumb {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+body.dark-mode .faq-question {
+  background-color: #383838;
+  color: #ffffff;
+  border-color: #666666;
+}
+
+body.dark-mode a {
+  color: #8ecbff;
+}
+/* Keep the FAQ content properly aligned */
+main {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+main > section {
+  width: 100%;
+  margin-left: 0;
+}
+
+.faq-item {
+  width: 100%;
+}
+
+.faq-question {
+  display: block;
+  width: 100%;
+}
