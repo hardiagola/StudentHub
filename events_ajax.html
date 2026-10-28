@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - AJAX Event Management</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .api-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .api-form .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .api-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .api-actions button {
+            margin: 0;
+        }
+
+        .api-message {
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 5px;
+        }
+
+        .api-message.success {
+            background: #e4f7e8;
+            color: #185b2a;
+        }
+
+        .api-message.error {
+            background: #fde8e8;
+            color: #8a1c1c;
+        }
+
+        .api-table-wrap {
+            overflow-x: auto;
+        }
+
+        .api-table-wrap table {
+            min-width: 700px;
+        }
+
+        .api-table-wrap button {
+            margin: 2px;
+        }
+    </style>
+
+    <script src="events-api.js" defer></script>
+</head>
+<body>
+<header>
+    <h1>StudentHub</h1>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="admin_dashboard.php">Admin Dashboard</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Event Management — Fetch API</h2>
+        <p>Add, view, update, and delete events without reloading the page.</p>
+
+        <div id="apiMessage" class="api-message" role="status" hidden></div>
+        <p id="loadingMessage" role="status">Loading events...</p>
+
+        <form id="eventForm" class="api-form">
+            <input type="hidden" id="eventId">
+
+            <div>
+                <label for="eventName">Event Name</label>
+                <input type="text" id="eventName" maxlength="150" required>
+            </div>
+
+            <div>
+                <label for="eventDate">Event Date</label>
+                <input type="date" id="eventDate" required>
+            </div>
+
+            <div>
+                <label for="eventVenue">Venue</label>
+                <input type="text" id="eventVenue" maxlength="150" required>
+            </div>
+
+            <div>
+                <label for="eventCategory">Category</label>
+                <input type="text" id="eventCategory" maxlength="50" required>
+            </div>
+
+            <div class="full-width">
+                <label for="eventDescription">Description</label>
+                <textarea id="eventDescription" maxlength="5000" rows="4"></textarea>
+            </div>
+
+            <div class="full-width api-actions">
+                <button type="submit" id="saveButton">Add Event</button>
+                <button type="button" id="cancelButton" hidden>Cancel Edit</button>
+                <button type="button" id="refreshButton">Refresh Events</button>
+            </div>
+        </form>
+    </section>
+
+    <section>
+        <h2>Saved Events</h2>
+        <div class="api-table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="eventsTableBody">
+                    <tr>
+                        <td colspan="7">Loading events...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>StudentHub — Practical 13</p>
+</footer>
+</body>
+</html>
