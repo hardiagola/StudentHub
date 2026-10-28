@@ -8,15 +8,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
     <h1>StudentHub</h1>
 
-    <button id="menuToggle" class="menu-toggle"
-            type="button" aria-label="Toggle navigation"
-            aria-expanded="false">
+    <button id="menuToggle" class="menu-toggle" type="button"
+            aria-label="Toggle navigation" aria-expanded="false">
       ☰ Menu
     </button>
 
@@ -46,37 +44,36 @@
   <main id="main-content">
     <section>
       <h2>Create Your Account</h2>
-      <p>Fill in the details below to register on StudentHub.</p>
+      <p>Enter your details to register on StudentHub.</p>
 
-      <form id="registrationForm" novalidate>
+      <form id="registrationForm"
+            action="register.php"
+            method="POST"
+            novalidate>
 
         <label for="fullname">Full Name</label>
         <input type="text" id="fullname" name="fullname"
                autocomplete="name" required
                aria-describedby="fullnameError">
-        <small id="fullnameError" class="field-error"
-               aria-live="polite"></small>
+        <small id="fullnameError" class="field-error" aria-live="polite"></small>
 
         <label for="email">Email Address</label>
         <input type="email" id="email" name="email"
                autocomplete="email" required
                aria-describedby="emailError">
-        <small id="emailError" class="field-error"
-               aria-live="polite"></small>
+        <small id="emailError" class="field-error" aria-live="polite"></small>
 
         <label for="mobile">Mobile Number</label>
         <input type="tel" id="mobile" name="mobile"
-               autocomplete="tel" inputmode="numeric"
+               inputmode="numeric" maxlength="10"
                placeholder="10-digit mobile number" required
                aria-describedby="mobileError">
-        <small id="mobileError" class="field-error"
-               aria-live="polite"></small>
+        <small id="mobileError" class="field-error" aria-live="polite"></small>
 
         <label for="enrollment">Enrollment Number</label>
-        <input type="text" id="enrollment" name="enrollment"
-               required aria-describedby="enrollmentError">
-        <small id="enrollmentError" class="field-error"
-               aria-live="polite"></small>
+        <input type="text" id="enrollment" name="enrollment" required
+               aria-describedby="enrollmentError">
+        <small id="enrollmentError" class="field-error" aria-live="polite"></small>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password"
@@ -84,88 +81,59 @@
                aria-describedby="passwordHelp passwordError">
 
         <small id="passwordHelp">
-          Use at least 8 characters, including uppercase,
-          lowercase, a number, and a special character.
+          At least 8 characters, uppercase and lowercase letters,
+          a number, and a special character.
         </small>
 
         <div class="strength-container">
           <label for="passwordStrength">Password strength</label>
-          <progress id="passwordStrength" max="4" value="0">
-            0%
-          </progress>
+          <progress id="passwordStrength" max="4" value="0"></progress>
           <span id="strengthText" aria-live="polite">Not entered</span>
         </div>
 
-        <small id="passwordError" class="field-error"
-               aria-live="polite"></small>
+        <small id="passwordError" class="field-error" aria-live="polite"></small>
 
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword"
-               name="confirmPassword"
+        <input type="password" id="confirmPassword" name="confirmPassword"
                autocomplete="new-password" required
                aria-describedby="confirmPasswordError">
-        <small id="confirmPasswordError" class="field-error"
-               aria-live="polite"></small>
+        <small id="confirmPasswordError" class="field-error" aria-live="polite"></small>
 
         <label for="course">Course</label>
-        <select id="course" name="course" required
-                aria-describedby="courseError">
+        <select id="course" name="course" required>
           <option value="">Select your course</option>
-          <option value="BTech AIML">B.Tech Artificial Intelligence &amp; ML</option>
+          <option value="BTech AIML">B.Tech AIML</option>
           <option value="BTech CE">B.Tech Computer Engineering</option>
           <option value="BTech IT">B.Tech Information Technology</option>
-          <option value="BTech CSE">B.Tech Computer Science</option>
           <option value="Other">Other</option>
         </select>
-        <small id="courseError" class="field-error"
-               aria-live="polite"></small>
+        <small id="courseError" class="field-error" aria-live="polite"></small>
 
         <label for="year">Academic Year</label>
-        <select id="year" name="year" required
-                aria-describedby="yearError">
+        <select id="year" name="year" required>
           <option value="">Select your year</option>
           <option value="1">First Year</option>
           <option value="2">Second Year</option>
           <option value="3">Third Year</option>
           <option value="4">Fourth Year</option>
         </select>
-        <small id="yearError" class="field-error"
-               aria-live="polite"></small>
+        <small id="yearError" class="field-error" aria-live="polite"></small>
 
         <fieldset>
           <legend>Gender</legend>
-
-          <label>
-            <input type="radio" name="gender" value="Female" required>
-            Female
-          </label>
-
-          <label>
-            <input type="radio" name="gender" value="Male">
-            Male
-          </label>
-
-          <label>
-            <input type="radio" name="gender" value="Other">
-            Other
-          </label>
-
-          <label>
-            <input type="radio" name="gender" value="Prefer not to say">
-            Prefer not to say
-          </label>
+          <label><input type="radio" name="gender" value="Female" required> Female</label>
+          <label><input type="radio" name="gender" value="Male"> Male</label>
+          <label><input type="radio" name="gender" value="Other"> Other</label>
+          <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
         </fieldset>
-
-        <small id="genderError" class="field-error"
-               aria-live="polite"></small>
+        <small id="genderError" class="field-error" aria-live="polite"></small>
 
         <label class="terms-label" for="terms">
-          <input type="checkbox" id="terms" name="terms" required
-                 aria-describedby="termsError">
+          <input type="checkbox" id="terms" name="terms"
+                 value="accepted" required>
           I accept the terms and conditions.
         </label>
-        <small id="termsError" class="field-error"
-               aria-live="polite"></small>
+        <small id="termsError" class="field-error" aria-live="polite"></small>
 
         <div id="formMessage" role="status" aria-live="polite"></div>
 
@@ -174,11 +142,8 @@
       </form>
     </section>
 
-    <aside aria-label="Login note">
-      <p>
-        Already have an account?
-        <a href="login.html">Login here</a>.
-      </p>
+    <aside>
+      <p>Already have an account? <a href="login.html">Login here</a>.</p>
     </aside>
   </main>
 
