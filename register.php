@@ -1,5 +1,7 @@
 
 <?php
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 $errors = [];
 $message = "";
 
@@ -8,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit("Please submit the registration form using POST.");
 }
 
-// Read form values
+// Read submitted values
 $fullname = trim($_POST["fullname"] ?? "");
 $email = trim($_POST["email"] ?? "");
 $mobile = trim($_POST["mobile"] ?? "");
@@ -21,7 +23,7 @@ $gender = trim($_POST["gender"] ?? "");
 $terms = $_POST["terms"] ?? "";
 
 // Server-side validation
-if (!preg_match("/^[A-Za-z][A-Za-z '\-]{1,59}$/", $fullname)) {
+if (!preg_match("/^[A-Za-z][A-Za-z '\-]{1,99}$/", $fullname)) {
     $errors[] = "Enter a valid full name.";
 }
 
@@ -54,11 +56,11 @@ if ($password !== $confirmPassword) {
 $allowedCourses = ["BTech AIML", "BTech CE", "BTech IT", "Other"];
 
 if (!in_array($course, $allowedCourses, true)) {
-    $errors[] = "Please select a valid course.";
+    $errors[] = "Select a valid course.";
 }
 
 if (!in_array($year, ["1", "2", "3", "4"], true)) {
-    $errors[] = "Please select a valid academic year.";
+    $errors[] = "Select a valid academic year.";
 }
 
 $allowedGenders = [
@@ -69,91 +71,88 @@ $allowedGenders = [
 ];
 
 if (!in_array($gender, $allowedGenders, true)) {
-    $errors[] = "Please select a gender option.";
+    $errors[] = "Select a valid gender.";
 }
 
 if ($terms !== "accepted") {
     $errors[] = "You must accept the terms and conditions.";
 }
 
-// Save valid registrations to JSON
 if (empty($errors)) {
-    $dataDirectory = __DIR__ . "/data";
+    $conn = null;
 
-    if (!is_dir($dataDirectory)) {
-        if (!mkdir($dataDirectory, 0700, true) &&
-            !is_dir($dataDirectory)) {
-            $errors[] = "Unable to create the data directory.";
+    try {
+        // XAMPP default credentials; change if yours are different.
+        $conn = new mysqli(
+            "localhost",
+            "root",
+            "",
+            "studenthub_db"
+        );
+
+        $conn->set_charset("utf8mb4");
+
+        // Check for duplicate email or enrollment.
+        $check = $conn->prepare(
+            "SELECT student_id FROM students
+             WHERE email = ? OR enrollment = ?
+             LIMIT 1"
+        );
+
+        $check->bind_param("ss", $email, $enrollment);
+        $check->execute();
+        $check->store_result();
+
+        if ($check->num_rows > 0) {
+            $errors[] = "This email or enrollment number is already registered.";
         }
-    }
 
-    $file = $dataDirectory . "/registrations.json";
+        $check->close();
 
-    if (empty($errors)) {
-        $handle = fopen($file, "c+");
+        if (empty($errors)) {
+            // Never store the original password.
+            $passwordHash = password_hash(
+                $password,
+                PASSWORD_DEFAULT
+            );
 
-        if ($handle === false) {
-            $errors[] = "Unable to open the JSON storage file.";
-        } elseif (!flock($handle, LOCK_EX)) {
-            fclose($handle);
-            $errors[] = "Unable to lock the JSON storage file.";
+            $stmt = $conn->prepare(
+                "INSERT INTO students
+                (fullname, email, mobile, enrollment,
+                 course, year, gender, password_hash)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+            );
+
+            $yearNumber = (int)$year;
+
+            $stmt->bind_param(
+                "sssssiss",
+                $fullname,
+                $email,
+                $mobile,
+                $enrollment,
+                $course,
+                $yearNumber,
+                $gender,
+                $passwordHash
+            );
+
+            $stmt->execute();
+            $stmt->close();
+
+            $message = "Registration successful! Your details have been saved.";
+        }
+    } catch (mysqli_sql_exception $e) {
+        error_log("Registration database error: " . $e->getMessage());
+
+        if ((int)$e->getCode() === 1062) {
+            $errors[] = "This email or enrollment number is already registered.";
         } else {
-            rewind($handle);
-            $contents = stream_get_contents($handle);
-            $records = [];
-
-            if ($contents === false) {
-                $errors[] = "Unable to read the JSON storage file.";
-            } elseif (trim($contents) !== "") {
-                $decoded = json_decode($contents, true);
-
-                if (json_last_error() !== JSON_ERROR_NONE ||
-                    !is_array($decoded)) {
-                    $errors[] = "The JSON file contains invalid data.";
-                } else {
-                    $records = $decoded;
-                }
-            }
-
-            if (empty($errors)) {
-                $records[] = [
-                    "fullname" => $fullname,
-                    "email" => $email,
-                    "mobile" => $mobile,
-                    "enrollment" => $enrollment,
-                    "password_hash" => password_hash(
-                        $password,
-                        PASSWORD_DEFAULT
-                    ),
-                    "course" => $course,
-                    "year" => $year,
-                    "gender" => $gender,
-                    "registered_at" => date("Y-m-d H:i:s")
-                ];
-
-                $json = json_encode(
-                    $records,
-                    JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
-                );
-
-                if ($json === false) {
-                    $errors[] = "Unable to convert registration data to JSON.";
-                } else {
-                    rewind($handle);
-
-                    if (!ftruncate($handle, 0)) {
-                        $errors[] = "Unable to prepare the storage file.";
-                    } elseif (fwrite($handle, $json . PHP_EOL) === false ||
-                              !fflush($handle)) {
-                        $errors[] = "Unable to save the registration.";
-                    } else {
-                        $message = "Registration submitted successfully!";
-                    }
-                }
-            }
-
-            flock($handle, LOCK_UN);
-            fclose($handle);
+            $errors[] = "Registration could not be completed. Please try again.";
+        }
+    } finally {
+        if ($conn instanceof mysqli) {
+            $conn->close();
         }
     }
 }
@@ -175,27 +174,15 @@ if (empty($errors)) {
         <section>
             <?php if (!empty($errors)): ?>
                 <h2>Registration Failed</h2>
-
                 <ul>
                     <?php foreach ($errors as $error): ?>
-                        <li><?= htmlspecialchars(
-                            $error,
-                            ENT_QUOTES,
-                            "UTF-8"
-                        ) ?></li>
+                        <li><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></li>
                     <?php endforeach; ?>
                 </ul>
-
                 <p><a href="register.html">Return to Registration</a></p>
             <?php else: ?>
                 <h2>Registration Successful</h2>
-
-                <p><?= htmlspecialchars(
-                    $message,
-                    ENT_QUOTES,
-                    "UTF-8"
-                ) ?></p>
-
+                <p><?= htmlspecialchars($message, ENT_QUOTES, "UTF-8") ?></p>
                 <p><a href="index.html">Return to Home</a></p>
             <?php endif; ?>
         </section>

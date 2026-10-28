@@ -12,12 +12,6 @@
 
   <header>
     <h1>StudentHub</h1>
-
-    <button id="menuToggle" class="menu-toggle" type="button"
-            aria-label="Toggle navigation" aria-expanded="false">
-      ☰ Menu
-    </button>
-
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -33,7 +27,6 @@
         <li><a href="feedback.html">Feedback</a></li>
       </ul>
     </nav>
-
     <button id="themeToggle" type="button">Switch to Dark Mode</button>
   </header>
 
@@ -46,65 +39,44 @@
       <h2>Create Your Account</h2>
       <p>Enter your details to register on StudentHub.</p>
 
-      <form id="registrationForm"
-            action="register.php"
-            method="POST"
-            novalidate>
+      <form id="registrationForm" action="register.php"
+            method="POST" novalidate>
 
         <label for="fullname">Full Name</label>
         <input type="text" id="fullname" name="fullname"
-               autocomplete="name" required
-               aria-describedby="fullnameError">
+               autocomplete="name" required>
         <small id="fullnameError" class="field-error" aria-live="polite"></small>
 
         <label for="email">Email Address</label>
         <input type="email" id="email" name="email"
-               autocomplete="email" required
-               aria-describedby="emailError">
+               autocomplete="email" required>
         <small id="emailError" class="field-error" aria-live="polite"></small>
 
         <label for="mobile">Mobile Number</label>
         <input type="tel" id="mobile" name="mobile"
-               inputmode="numeric" maxlength="10"
-               placeholder="10-digit mobile number" required
-               aria-describedby="mobileError">
+               inputmode="numeric" maxlength="10" required>
         <small id="mobileError" class="field-error" aria-live="polite"></small>
 
         <label for="enrollment">Enrollment Number</label>
-        <input type="text" id="enrollment" name="enrollment" required
-               aria-describedby="enrollmentError">
+        <input type="text" id="enrollment" name="enrollment" required>
         <small id="enrollmentError" class="field-error" aria-live="polite"></small>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password"
-               autocomplete="new-password" required
-               aria-describedby="passwordHelp passwordError">
-
-        <small id="passwordHelp">
-          At least 8 characters, uppercase and lowercase letters,
-          a number, and a special character.
-        </small>
-
-        <div class="strength-container">
-          <label for="passwordStrength">Password strength</label>
-          <progress id="passwordStrength" max="4" value="0"></progress>
-          <span id="strengthText" aria-live="polite">Not entered</span>
-        </div>
-
+               autocomplete="new-password" required>
         <small id="passwordError" class="field-error" aria-live="polite"></small>
 
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" name="confirmPassword"
-               autocomplete="new-password" required
-               aria-describedby="confirmPasswordError">
+               autocomplete="new-password" required>
         <small id="confirmPasswordError" class="field-error" aria-live="polite"></small>
 
         <label for="course">Course</label>
         <select id="course" name="course" required>
           <option value="">Select your course</option>
-          <option value="BTech AIML">B.Tech AIML</option>
-          <option value="BTech CE">B.Tech Computer Engineering</option>
-          <option value="BTech IT">B.Tech Information Technology</option>
+          <option value="BTech AIML">BTech AIML</option>
+          <option value="BTech CE">BTech CE</option>
+          <option value="BTech IT">BTech IT</option>
           <option value="Other">Other</option>
         </select>
         <small id="courseError" class="field-error" aria-live="polite"></small>
@@ -128,14 +100,14 @@
         </fieldset>
         <small id="genderError" class="field-error" aria-live="polite"></small>
 
-        <label class="terms-label" for="terms">
+        <label for="terms">
           <input type="checkbox" id="terms" name="terms"
                  value="accepted" required>
           I accept the terms and conditions.
         </label>
         <small id="termsError" class="field-error" aria-live="polite"></small>
 
-        <div id="formMessage" role="status" aria-live="polite"></div>
+        <p id="formMessage" role="status" aria-live="polite"></p>
 
         <button type="submit">Register</button>
         <button type="reset">Clear Form</button>
